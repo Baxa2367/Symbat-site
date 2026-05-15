@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-headline {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Custom Film Grain Animation */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(1%, -1%); }
+  50% { transform: translate(-1%, 1%); }
+  60% { transform: translate(2%, 1%); }
+  70% { transform: translate(-1%, -1%); }
+  80% { transform: translate(1%, 2%); }
+  90% { transform: translate(-2%, 1%); }
+}
+
+.film-grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: -50%; left: -50%;
+  right: -50%; bottom: -50%;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+  z-index: 30;
+  opacity: 0.5;
+}
+
+/* VHS tracking line simulation */
+@keyframes vhs-tracking {
+  0% { top: -10%; opacity: 0; }
+  20% { opacity: 0.15; }
+  50% { opacity: 0.3; }
+  80% { opacity: 0.15; }
+  100% { top: 110%; opacity: 0; }
+}
+
+.vhs-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  animation: vhs-tracking 6s linear infinite;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* Slow Cinematic Zoom */
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 25s ease-out infinite alternate;
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fff7e8;
+}
+::-webkit-scrollbar-thumb {
+  background: #b98545;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b46f1f;
+}
