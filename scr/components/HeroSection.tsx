@@ -9,7 +9,7 @@ export const HeroSection: React.FC = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center animate-slow-zoom scale-105"
           style={{ 
-            backgroundImage: url('/photo/1.jpeg'),
+            backgroundImage: url('../photo/1.jpeg'),
             filter: 'contrast(1.05) brightness(1.08) saturate(1.15) sepia(0.14)'
           }}
         />
